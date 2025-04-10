@@ -1,7 +1,5 @@
 import { connectDB } from "@/configs/dbConfig";
 import { userModel } from "@/models/userModel";
-import { Teacher } from "@/models/Teacher";
-import { studentsModel } from "@/models/Demographic";
 import { NextResponse } from "next/server";
 
 connectDB();
@@ -41,13 +39,7 @@ export const POST = async (req) => {
   // Generate registration number for user
   const userRegNumber = await generateRegNumber();
 
-  // Create a new teacher if the role is "teacher"
-  if (role === "teacher") {
-    const newTeacher = await Teacher.create({
-      name: `${firstname} ${lastname}`,
-      email: email
-    });
-  }
+
 
   // Create the user
   const newUser = await userModel.create({
@@ -61,19 +53,7 @@ export const POST = async (req) => {
     const studentRegNumber = newUser.regNumber; // Separate reg number for the student
     console.log(studentRegNumber);
 
-    const newStudent = await studentsModel.create({
-      name: studentData.name || firstname, // Use student's name or fallback to user's first name
-      lastName: lastname,
-      regNumber: studentRegNumber, // Separate regNumber for student
-      emailAddress: email,
-    });
 
-    if (!newStudent) {
-      return NextResponse.json(
-        { message: "Failed to create student record" },
-        { status: 500 }
-      );
-    }
   }
 
   return NextResponse.json(
