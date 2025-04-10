@@ -145,9 +145,11 @@ export default function OrderPage({ session }) {
 
   // Fetch menu items using fetch
   useEffect(() => {
-    fetch("/api/menu")
+    fetch("/api/fooditems")
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
+
         if (data.success) setFoods(data.data);
         else console.error("Menu fetch failed:", data.error);
       })
