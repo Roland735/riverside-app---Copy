@@ -9,7 +9,7 @@ export async function GET(request) {
         const pipeline = [
             {
                 $lookup: {
-                    from: "fooditems", // use lowercase collection name
+                    from: "foodItems", // use lowercase collection name
                     localField: "name",
                     foreignField: "_id",
                     as: "food",
