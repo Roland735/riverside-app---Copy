@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 const CanteenOrderSchema = new Schema({
     // The name of the food item (e.g., "Burger", "Sandwich").
-    name: { type: Schema.Types.ObjectId, ref: 'foodItems', required: true },
+    name: { type: Schema.Types.ObjectId, ref: 'fooditems', required: true },
     // The total quantity ordered for the item.
     quantity: { type: Number, required: true },
     // How many of the items have been prepared.

@@ -13,7 +13,6 @@ const CanteenDashboard = () => {
             if (res.ok) {
                 const data = await res.json();
                 console.log(data);
-
                 setOrders(data.orders);
             } else {
                 console.error("Failed to fetch orders");
@@ -23,9 +22,18 @@ const CanteenDashboard = () => {
         }
     };
 
-    // On mount, fetch orders from the backend
+    // On mount, fetch orders from the backend and set up interval
     useEffect(() => {
+        // Initial fetch of orders
         fetchOrders();
+
+        // Set up an interval to periodically fetch orders (e.g., every 10 seconds)
+        const intervalId = setInterval(() => {
+            fetchOrders();
+        }, 10000);
+
+        // Clean up the interval on component unmount
+        return () => clearInterval(intervalId);
     }, []);
 
     // Function to mark an order as prepared by calling the PATCH endpoint.
