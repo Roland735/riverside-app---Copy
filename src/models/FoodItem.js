@@ -10,4 +10,4 @@ const FoodItemSchema = new Schema({
     imageUrl: { type: String } // URL to an image of the food item.
 }, { timestamps: true });
 
-export const foodItem = mongoose.models.foodItems || mongoose.model('foodItems', FoodItemSchema);
+export const foodItem = mongoose.models.fooditems || mongoose.model('fooditems', FoodItemSchema);

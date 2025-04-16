@@ -10,7 +10,7 @@ export async function GET(request) {
             { $unwind: "$items" },
             {
                 $lookup: {
-                    from: "foodItems", // corrected collection name
+                    from: "fooditems", // corrected collection name
                     localField: "items.foodItem",
                     foreignField: "_id",
                     as: "food",
