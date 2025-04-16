@@ -28,24 +28,24 @@ export async function PATCH(request) {
         const { orderId } = await request.json();
         const order = await CanteenOrder.findById(orderId);
         if (!order) {
-            await disconnectDB();
+
             return NextResponse.json({ error: "Order not found" }, { status: 404 });
         }
         // Only increment if prepared count is less than the total quantity ordered
         if (order.prepared < order.quantity) {
             order.prepared += 1;
             await order.save();
-            await disconnectDB();
+
             return NextResponse.json({ order }, { status: 200 });
         } else {
-            await disconnectDB();
+
             return NextResponse.json(
                 { error: "All items are already prepared" },
                 { status: 400 }
             );
         }
     } catch (error) {
-        await disconnectDB();
+
         return NextResponse.json({ error: error.message }, { status: 500 });
     }
 }

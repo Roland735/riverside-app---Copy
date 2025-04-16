@@ -14,9 +14,9 @@ export default async function Login() {
       <div className="text-lg font-bold">
         Welcome to <span className="text-red-500">Riverside Portal</span>
       </div>
-      <div className="">Please select your role</div>
+      {/* <div className="">Please select your role</div> */}
       <div className="flex flex-row space-x-4 my-3 ">
-        <Link
+        {/* <Link
           href={"student"}
           className="flex flex-col items-center justify-center border-2 border-red-500 rounded-md px-4 py-2 hover:bg-red-300 transition-colors duration-1000 "
         >
@@ -24,7 +24,7 @@ export default async function Login() {
           <span className="text-3xl text-red-500">
             <MdSchool />
           </span>
-        </Link>
+        </Link> */}
         <Link
           href={"admin"}
           className="flex flex-col items-center justify-center border-2 border-red-500 rounded-md px-4 py-2 hover:bg-red-300 transition-colors duration-1000"
@@ -34,7 +34,7 @@ export default async function Login() {
             <FaUserShield />
           </span>
         </Link>
-        <Link
+        {/* <Link
           href={"it-support"}
           className="flex flex-col items-center justify-center border-2 border-red-500 rounded-md px-4 py-2 hover:bg-red-300 transition-colors duration-1000"
         >
@@ -60,7 +60,7 @@ export default async function Login() {
           <span className="text-3xl text-red-500">
             <FaStore />
           </span>
-        </Link>
+        </Link> */}
       </div>
     </div>
   );
