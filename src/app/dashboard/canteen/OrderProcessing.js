@@ -6,6 +6,7 @@ export default function OrderProcessing() {
     const [orderCode, setOrderCode] = useState("");
     const [totalOrders, setTotalOrders] = useState(0);
     const [orderDetails, setOrderDetails] = useState(null);
+    
 
     // fetch the total number of orders
 

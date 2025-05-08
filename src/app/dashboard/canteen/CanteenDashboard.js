@@ -152,7 +152,7 @@ const CanteenDashboard = () => {
                     })}
                 </div>
             </div>
-            <OrderProcessing totalOrders={5} />
+            <OrderPr    ocessing totalOrders={5} />
         </div>
     );
 };

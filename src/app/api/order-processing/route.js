@@ -38,16 +38,26 @@ export async function POST(request) {
             ? order.processedTime || new Date().toLocaleString()
             : null;
 
+        console.log("Processed Time:", order);
+
         // For simplicity, assume a single food item per order.
+        const foodDetails = order.items.map(item => {
+            // Ensure we have valid data before constructing the string
+            const foodName = item.foodItem?.name || "N/A";
+            const quantity = item.quantity || 0;
+            return `${foodName}-${quantity}`;
+        }).join(", ");
+
         const orderDetails = {
             name: `${order.user.firstname} ${order.user.lastname}`,
-            food: order.items[0]?.foodItem?.name || "N/A",
+            food: foodDetails || "N/A",
             price: order.items[0]?.foodItem?.price
                 ? "$" + order.items[0]?.foodItem?.price
                 : "N/A",
             processedTime,
             alreadyProcessed,
         };
+        console.log("Order Details:", orderDetails);
 
 
         return NextResponse.json(orderDetails, { status: 200 });
@@ -65,6 +75,8 @@ export async function PATCH(request) {
 
         // Find the order by collectionId and verify it belongs to the student.
         const order = await Order.findOne({ collectionId: orderCode }).populate("user");
+        console.log("Order found:", order);
+
         if (!order) {
 
             return NextResponse.json(
