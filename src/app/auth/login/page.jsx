@@ -29,7 +29,7 @@ export default async function Login() {
           href={"admin"}
           className="flex flex-col items-center justify-center border-2 border-red-500 rounded-md px-4 py-2 hover:bg-red-300 transition-colors duration-1000"
         >
-          <span className="">User</span>
+          <span className="">Users</span>
           <span className="text-3xl text-red-500">
             <FaUserShield />
           </span>
