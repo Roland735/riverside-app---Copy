@@ -6,6 +6,7 @@ import StudentHome from "@/app/components/student/StudentHome";
 import { useContext } from "react";
 import MobileNavbar from "@/app/components/Universal/MobileNavbar";
 import HomeDashboard from "@/app/components/student/StudentHome";
+import OrderForm from "@/app/components/student/Results";
 
 function Dashboard() {
   const [session, setSession] = useState(null);
@@ -43,8 +44,8 @@ function Dashboard() {
     return (
       <>
         <MobileNavbar />
-        <div className="md:flex justify-between  py-3 w-full items-center  shadow-2xl light-border mt-10 md:mt-0">
-          <HomeDashboard session={session} />
+        <div className="md:flex justify-between  py-3 w-full items-center  shadow-2xl light-border">
+          <OrderForm session={session} />
         </div>
       </>
     );

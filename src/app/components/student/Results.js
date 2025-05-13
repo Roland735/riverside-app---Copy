@@ -105,7 +105,7 @@ function OrderSummary({ orderItems, onUpdateItem, onRemoveItem, onSubmitOrder })
                     <p className="mt-1 text-xs text-red-500">{errors[idx]}</p>
                   )}
                 </div>
-                <div className="mt-2">
+                {/* <div className="mt-2">
                   <label className="block text-sm font-medium text-gray-700">
                     Special Instructions:
                   </label>
@@ -117,7 +117,7 @@ function OrderSummary({ orderItems, onUpdateItem, onRemoveItem, onSubmitOrder })
                     placeholder="Any special instructions?"
                     className="mt-1 block w-full border border-gray-300 rounded-md p-2"
                   ></textarea>
-                </div>
+                </div> */}
               </li>
             ))}
           </ul>

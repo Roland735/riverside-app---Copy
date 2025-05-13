@@ -6,10 +6,8 @@ export default function OrderProcessing() {
     const [orderCode, setOrderCode] = useState("");
     const [totalOrders, setTotalOrders] = useState(0);
     const [orderDetails, setOrderDetails] = useState(null);
-    
 
     // fetch the total number of orders
-
     useEffect(() => {
         const fetchTotalOrders = async () => {
             try {
@@ -23,11 +21,9 @@ export default function OrderProcessing() {
         };
 
         fetchTotalOrders();
-    })
+    }, []);
 
-    // Handle processing the order:
-    // - Sends a POST request with studentNumber and orderCode.
-    // - The backend returns order details, including whether it has already been processed.
+    // Handle processing the order
     const handleProcess = async () => {
         if (studentNumber && orderCode) {
             try {
@@ -50,9 +46,7 @@ export default function OrderProcessing() {
         }
     };
 
-    // Handle proceeding after order processing:
-    // - Sends a PATCH request to update the order as processed.
-    // - On success, it clears the order details and updates the total orders count.
+    // Handle proceeding after order processing
     const handleProceed = async () => {
         try {
             const res = await fetch("/api/order-processing", {
@@ -77,9 +71,7 @@ export default function OrderProcessing() {
             <div className="text-center mb-4 flex-col">
                 <div className="text-xl font-bold text-gray-800">Total Orders:</div>
                 <div
-                    className={`text-3xl font-extrabold ml-2 p-5 rounded-full ${totalOrders === 0
-                        ? "bg-green-600 text-white"
-                        : "bg-red-900 text-slate-100"
+                    className={`text-3xl font-extrabold ml-2 p-5 rounded-full ${totalOrders === 0 ? "bg-green-600 text-white" : "bg-red-900 text-slate-100"
                         }`}
                 >
                     {totalOrders}
@@ -117,7 +109,15 @@ export default function OrderProcessing() {
                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
                     <div className="bg-white p-6 rounded-lg shadow-lg text-center">
                         {orderDetails.error ? (
-                            <p className="text-red-600 font-bold">{orderDetails.error}</p>
+                            <>
+                                <p className="text-red-600 font-bold">Error processing order</p>
+                                <button
+                                    onClick={() => setOrderDetails(null)}
+                                    className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+                                >
+                                    Close
+                                </button>
+                            </>
                         ) : orderDetails.alreadyProcessed ? (
                             <>
                                 <h2 className="text-xl font-bold mb-2">Order Already Processed</h2>

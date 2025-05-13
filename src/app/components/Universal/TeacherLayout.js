@@ -84,17 +84,17 @@ const TeacherLayout = ({ children }) => {
 
     // Student Menus
     {
-      title: "Home",
+      title: "Order",
       src: "FaHome",
       DashboardLink: "/dashboard/student",
       roles: ["student"],
     },
-    {
-      title: "Order Food",
-      src: "FaShoppingCart",
-      DashboardLink: "/dashboard/student/order",
-      roles: ["student"],
-    },
+    // {
+    //   title: "Order Food",
+    //   src: "FaShoppingCart",
+    //   DashboardLink: "/dashboard/student/order",
+    //   roles: ["student"],
+    // },
 
     {
       title: "Transaction History",
